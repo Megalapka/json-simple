@@ -1,0 +1,188 @@
+{
+  "result": [
+    {
+      "id": "92135135",
+      "ferId": "8",
+      "name": "Акушерство и гинекология (до 12 лет)",
+      "countFreeParticipant": 6,
+      "countFreeTicket": 6,
+      "lastDate": "2026-03-13T08:45:00",
+      "nearestDate": "2026-03-11T08:00:00"
+    },
+    {
+      "id": "92134141",
+      "ferId": "255",
+      "name": "Аллергология и иммунология",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134158",
+      "ferId": "79",
+      "name": "Гастроэнтерология",
+      "countFreeParticipant": 66,
+      "countFreeTicket": 66,
+      "lastDate": "2026-03-13T14:30:00",
+      "nearestDate": "2026-03-05T10:15:00"
+    },
+    {
+      "id": "92134187",
+      "ferId": "81",
+      "name": "Детская кардиология",
+      "countFreeParticipant": 123,
+      "countFreeTicket": 123,
+      "lastDate": "2026-03-13T14:15:00",
+      "nearestDate": "2026-03-02T09:15:00"
+    },
+    {
+      "id": "92134281",
+      "ferId": null,
+      "name": "Детская урология-андрология",
+      "countFreeParticipant": 2,
+      "countFreeTicket": 2,
+      "lastDate": "2026-03-13T08:20:00",
+      "nearestDate": "2026-03-12T08:00:00"
+    },
+    {
+      "id": "92134188",
+      "ferId": "11",
+      "name": "Детская хирургия",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134186",
+      "ferId": "83",
+      "name": "Детская эндокринология",
+      "countFreeParticipant": 44,
+      "countFreeTicket": 44,
+      "lastDate": "2026-03-13T14:45:00",
+      "nearestDate": "2026-03-03T09:00:00"
+    },
+    {
+      "id": "92134147",
+      "ferId": "32",
+      "name": "Инфекционные болезни",
+      "countFreeParticipant": 137,
+      "countFreeTicket": 137,
+      "lastDate": "2026-03-13T14:45:00",
+      "nearestDate": "2026-03-03T13:30:00"
+    },
+    {
+      "id": "92134149",
+      "ferId": null,
+      "name": "Лечебная физкультура и спортивная медицина",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134558",
+      "ferId": "0",
+      "name": "Логопедия",
+      "countFreeParticipant": 9,
+      "countFreeTicket": 9,
+      "lastDate": "2026-03-13T10:45:00",
+      "nearestDate": "2026-03-06T10:00:00"
+    },
+    {
+      "id": "92134150",
+      "ferId": "14",
+      "name": "Неврология",
+      "countFreeParticipant": 134,
+      "countFreeTicket": 134,
+      "lastDate": "2026-03-13T19:30:00",
+      "nearestDate": "2026-03-02T08:15:00"
+    },
+    {
+      "id": "92134152",
+      "ferId": "19",
+      "name": "Оториноларингология",
+      "countFreeParticipant": 60,
+      "countFreeTicket": 60,
+      "lastDate": "2026-03-13T19:45:00",
+      "nearestDate": "2026-03-10T08:00:00"
+    },
+    {
+      "id": "92134153",
+      "ferId": "20",
+      "name": "Офтальмология",
+      "countFreeParticipant": 14,
+      "countFreeTicket": 14,
+      "lastDate": "2026-03-13T18:30:00",
+      "nearestDate": "2026-03-12T14:40:00"
+    },
+    {
+      "id": "92134184",
+      "ferId": "22",
+      "name": "Педиатрия",
+      "countFreeParticipant": 360,
+      "countFreeTicket": 360,
+      "lastDate": "2026-03-13T19:45:00",
+      "nearestDate": "2026-03-02T08:30:00"
+    },
+    {
+      "id": "92137642",
+      "ferId": null,
+      "name": "Психолог",
+      "countFreeParticipant": 15,
+      "countFreeTicket": 15,
+      "lastDate": "2026-03-13T14:30:00",
+      "nearestDate": "2026-03-10T09:00:00"
+    },
+    {
+      "id": "92134316",
+      "ferId": "90",
+      "name": "Пульмонология",
+      "countFreeParticipant": 53,
+      "countFreeTicket": 53,
+      "lastDate": "2026-03-13T14:40:00",
+      "nearestDate": "2026-03-04T18:20:00"
+    },
+    {
+      "id": "92135108",
+      "ferId": "27",
+      "name": "Реабилитолог",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134170",
+      "ferId": "28",
+      "name": "Травматология и ортопедия",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134338",
+      "ferId": "33",
+      "name": "Ультразвуковая диагностика",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    },
+    {
+      "id": "92134169",
+      "ferId": "35",
+      "name": "Функциональная диагностика",
+      "countFreeParticipant": 0,
+      "countFreeTicket": 0,
+      "lastDate": null,
+      "nearestDate": null
+    }
+  ],
+  "success": true,
+  "errorCode": 0,
+  "message": null,
+  "stackTrace": null
+}

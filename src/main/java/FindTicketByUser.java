@@ -86,6 +86,6 @@ public class FindTicketByUser {
             Long tickets = (Long) item.get("countFreeTicket");
 
             System.out.printf("%d. %s (ID: %s) - %d талонов%n", i+1, name, id, tickets);
-        }        
+        }
     }
 }

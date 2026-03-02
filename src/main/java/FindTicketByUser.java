@@ -1,12 +1,11 @@
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import java.io.IOException;
+import java.io.FileReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,42 +20,34 @@ public class FindTicketByUser {
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n=== мониторинг талонов горздрав ===");
-        System.out.println("1. Получить и сохранить данные");
-        System.out.println("2. Показать список специальностей (из файла)");
-        System.out.println("3. Поиск по названию (из файла)");
-        System.out.println("4. Отслеживать специальность");
-        System.out.println("5. Выход");
-        System.out.print("Выберите действие: ");
 
-        String choice = scanner.nextLine();
+        while (true) {
+            System.out.println("\n=== мониторинг талонов горздрав ===");
+            System.out.println("1. Получить и сохранить данные");
+            System.out.println("2. Показать список специальностей (из файла)");
+            System.out.println("3. Поиск по названию (из файла)");
+            System.out.println("4. Отслеживать специальность");
+            System.out.println("5. Выход");
+            System.out.print("Выберите действие: ");
 
-        switch (choice) {
-            case "1":
-                fetchAndSaveToFile();
-                System.out.println("✅ Данные сохранены в файл");
-                break;
-            default:
-                System.out.println("Неверный выбор");
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    fetchAndSaveToFile();
+                    System.out.println("✅ Данные сохранены в файл");
+                    break;
+                case "2":
+                    showSpecialities();
+                    break;
+                case "5":
+                    System.out.println("До свидания!");
+                    return;
+                default:
+                    System.out.println("Неверный выбор");
+            }
         }
-
     }
-
-//    private static void showSpecialities() throws Exception {
-//        JSONArray specialties = jsonSpecialties();
-//        System.out.println("\n=== список специальностей ===");
-//
-//        for (int i = 0; i < Math.min(50, specialties.size()); i++) {
-//            JSONObject item = (JSONObject) specialties.get(i);
-//            String name = (String) item.get("name");
-//            String id = (String) item.get("id");
-//            Long tickets = (Long) item.get("countFreeTicket");
-//
-//            System.out.printf("%d. %s (ID: %s) - %d талонов%n", i+1, name, id, tickets);
-//        }
-//
-//    }
-
 
     private static void fetchAndSaveToFile () throws Exception {
         HttpClient client = HttpClient.newHttpClient();
@@ -71,17 +62,30 @@ public class FindTicketByUser {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String responseBody = response.body();
-        Files.writeString(TEMP_FILE, responseBody, StandardCharsets.UTF_8);
+        Files.writeString(TEMP_FILE, responseBody);
     }
 
     private static JSONArray readFromFile() throws Exception {
-        if (!Files.exists(TEMP_FILE)){
-            System.out.println("❌ Сначала получите данные (пункт 1)");
+        if (!Files.exists(TEMP_FILE)) {
+            System.out.println("Сначала получите данные (пункт 1)");
             return null;
         }
-        String jsonString = Files.readString(TEMP_FILE, StandardCharsets.UTF_8);
+        FileReader reader = new FileReader(TEMP_FILE.toString());
         JSONParser parser = new JSONParser();
-        JSONObject obj = (JSONObject) parser.parse(jsonString);
-        return (JSONArray) obj.get("results");
+        JSONObject root = (JSONObject) parser.parse(reader);
+        return (JSONArray) root.get("result");
+    }
+
+    private static void showSpecialities() throws Exception {
+        JSONArray specialties = readFromFile();
+        System.out.println("\n=== список специальностей ===");
+        for (int i = 0; i < Math.min(50, specialties.size()); i++) {
+            JSONObject item = (JSONObject) specialties.get(i);
+            String name = (String) item.get("name");
+            String id = (String) item.get("id");
+            Long tickets = (Long) item.get("countFreeTicket");
+
+            System.out.printf("%d. %s (ID: %s) - %d талонов%n", i+1, name, id, tickets);
+        }        
     }
 }

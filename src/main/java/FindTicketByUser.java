@@ -40,6 +40,9 @@ public class FindTicketByUser {
                 case "2":
                     showSpecialities();
                     break;
+                case "3":
+                    searchFromFile(scanner);
+                    break;
                 case "5":
                     System.out.println("До свидания!");
                     return;
@@ -63,6 +66,7 @@ public class FindTicketByUser {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String responseBody = response.body();
         Files.writeString(TEMP_FILE, responseBody);
+        //добавить проверку наличия связи
     }
 
     private static JSONArray readFromFile() throws Exception {
@@ -86,6 +90,33 @@ public class FindTicketByUser {
             Long tickets = (Long) item.get("countFreeTicket");
 
             System.out.printf("%d. %s (ID: %s) - %d талонов%n", i+1, name, id, tickets);
+        }
+    }
+
+    private static void searchFromFile(Scanner scanner) throws Exception {
+        JSONArray specialties = readFromFile();
+        if (specialties == null) return;
+
+        System.out.println("Введите название для поиска: ");
+        String query = scanner.nextLine().toLowerCase();
+
+        System.out.println("\n ++++++ Результаты поиска ++++++");
+        boolean found = false;
+
+        for (Object obj : specialties) {
+            JSONObject item = (JSONObject) obj;
+            String name = (String) item.get("name");
+
+            if (name.toLowerCase().contains(query)) {
+                found = true;
+                String id = (String) item.get ("id");
+                Long tickets = (Long) item.get("countFreeTicket");
+                System.out.printf("%s (ID: %s) - %d талонов%n", name, id, tickets);
+            }
+        }
+
+        if (!found) {
+            System.out.println("Ничего не найдено");
         }
     }
 }

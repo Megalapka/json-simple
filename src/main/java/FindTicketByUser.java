@@ -118,5 +118,37 @@ public class FindTicketByUser {
         if (!found) {
             System.out.println("Ничего не найдено");
         }
+
+    }
+
+    private static void trackSpeciality(Scanner scanner) throws Exception {
+        JSONArray specialties = readFromFile();
+        if (specialties == null) return;
+
+        System.out.println("\n ------------выберите спеуиальность--------------");
+        for (int i = 0; i < Math.min(50, specialties.size()); i++) {
+            JSONObject item = (JSONObject) specialties.get(i);
+            String name = (String) item.get("name");
+            System.out.printf("%d. %s%n", i+1, name);
+        }
+        System.out.println("Введите номер специальности: ");
+        try {
+            int choice = Integer.parseInt(scanner.nextLine())-1;
+            JSONObject selected = (JSONObject) specialties.get(choice);
+            String name = (String) selected.get("name");
+            String id = (String) selected.get("id");
+
+            System.out.println("\n выбрана: " + name);
+            System.out.println("Начинаем отслеживание.. \n");
+
+            monitoringSpeciality(id, name);
+
+        } catch (Exception e) {
+            System.out.println("Ошибка выбора");
+        }
+    }
+
+    private static void monitoringSpeciality (String targetId, String targetName) throws Exception {
+
     }
 }

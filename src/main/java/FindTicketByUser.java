@@ -43,6 +43,9 @@ public class FindTicketByUser {
                 case "3":
                     searchFromFile(scanner);
                     break;
+                case "4":
+                    trackSpeciality(scanner);
+                    break;
                 case "5":
                     System.out.println("До свидания!");
                     return;
@@ -51,7 +54,7 @@ public class FindTicketByUser {
             }
         }
     }
-
+    // добавить ТО на коннект
     private static void fetchAndSaveToFile () throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
@@ -148,7 +151,39 @@ public class FindTicketByUser {
         }
     }
 
+    //мониторинг с периодическим обновлением файла
     private static void monitoringSpeciality (String targetId, String targetName) throws Exception {
+        int lastTicket = -1;
+
+        while (true) {
+            fetchAndSaveToFile();
+
+            JSONArray specialties = readFromFile();
+            if (specialties != null) {
+                for (Object obj : specialties) {
+                    JSONObject item = (JSONObject) obj;
+                    String id = (String) item.get("id");
+
+                    if (targetId.equals(id)) {
+                        Long tickets = (Long) item.get("countFreeTicket");
+                        String date = (String) item.get("nearestDate");
+
+                        String time = java.time.LocalTime.now()
+                                .format(java.time.format.DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                        if (tickets > 0) {
+                            System.out.printf("✅ [%s] %s: %d талонов! %s%n",
+                                    time, targetName, tickets,
+                                    date != null ? date.replace("T", " ") : "");
+                            System.out.print("\007");
+                        }
+                        break;
+                    }
+                }
+            }
+
+            Thread.sleep(60000);
+        }
 
     }
 }
